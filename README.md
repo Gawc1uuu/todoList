@@ -5,6 +5,7 @@
  <li>HTML</li>
  <li>CSS</li>
  <li>BOOTSTRAP</li>
+ <li>JAVASCRIPT</li>
  <li>NODEJS</li>
  <li>EXPRESS</li>
  <li>MONGODB</li>
