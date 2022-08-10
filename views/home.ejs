@@ -1,0 +1,128 @@
+<% layout('layouts/boilerplate') %>
+<div class="container-fluid">
+  <section id="addForm" class="my-4">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <form action="/todo" method="post" novalidate class="needs-validation">
+          <div class="input-group">
+            <input
+              class="form-control"
+              type="text"
+              name="todo"
+              id="todo"
+              placeholder="Add a todo"
+              required
+            />
+            <input
+              class="form-control"
+              type="date"
+              name="date"
+              id="date"
+              value="<%= date %>"
+              required
+            />
+            <button class="btn btn-success">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-2 offset-md-0 mt-2 mt-md-0 text-center">
+        <section class="logoutButton">
+          <form action="/logout">
+            <button class="btn btn-primary">logout</button>
+          </form>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <div class="row">
+    <div class="col-md-6">
+      <section id="todosDisplay">
+        <h1 class="display-4 text-center">ACTIVE TODOS</h1>
+        <div class="row">
+          <div class="col-md-8 offset-md-2 todolist">
+            <% for(let todo of allTodos){ %>
+            <div class="row todo align-items-center py-1">
+              <div class="col-8 todotext"><%= todo.text %></div>
+              <div class="col-4 d-flex justify-content-end py-1">
+                <form
+                  action="/todo/<%= todo._id%>?_method=DELETE"
+                  method="post"
+                >
+                  <button class="btn btn-danger">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </form>
+                <form action="/todo/<%= todo._id%>/edit" method="get">
+                  <button class="btn btn-primary">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                </form>
+                <form
+                  action="/todo/<%= todo._id%>/done?_method=DELETE"
+                  method="post"
+                >
+                  <button class="btn btn-success">
+                    <i class="fa-solid fa-check"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="col-md-6">
+      <section id="doneTodosDisplay">
+        <h1 class="display-4 text-center doneHeader">DONE TODOS</h1>
+        <div class="row">
+          <div class="col-md-8 offset-md-2 todolist">
+            <% for(let doneTodo of allDoneTodos){ %>
+            <div class="row todo doneTodo align-items-center py-1">
+              <div class="col-8 ps-md-5 todotext"><%= doneTodo.text %></div>
+              <div class="col-4 d-flex justify-content-around py-1">
+                <form
+                  action="/todo/<%= doneTodo._id%>?_method=DELETE"
+                  method="post"
+                >
+                  <button class="btn btn-danger">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section id="chooseDay">
+    <form action="/todo?date=<%=date%>">
+      <div class="row my-md-5">
+        <div class="col-md-4 offset-md-4 text-center">
+          <label for="date"
+            ><h2 class="display-5">Choose day to plan</h2></label
+          >
+          <div class="input-group">
+            <input
+              class="form-control"
+              type="date"
+              name="date"
+              id="goto"
+              value="<%=date%>"
+            />
+            <button class="btn btn-success">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>

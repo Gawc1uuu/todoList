@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url("bgimg.jpg"); /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+}
+.todolist {
+  background-color: white;
+  height: 350px;
+  max-height: 350px;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+i .icon {
+  text-rendering: optimizeLegibility;
+}
+.todo {
+  border-bottom: 2px solid lightgray;
+}
+.doneTodo {
+  text-decoration: line-through;
+}
+.todotext {
+  font-size: 24px;
+  font-weight: 600;
+  text-align: left;
+  padding-left: 40px;
+}
+.todo form {
+  margin-right: 5px;
+}
+.todo button {
+  padding: 8px 12px;
+}
+i .fa-solid {
+  font-family: "FontAwesome" !important;
+  text-rendering: optimizeLegibility;
+}
+
+h2 {
+  color: white;
+}
+.loginForm {
+  background-color: white;
+  border-radius: 10px;
+}
+@media (max-width: 760px) {
+  .doneHeader {
+    color: white;
+  }
+  .todolist {
+    max-height: 200px;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

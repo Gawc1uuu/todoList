@@ -1,0 +1,55 @@
+<% layout('layouts/boilerplate') %>
+
+<section id="chooseDay">
+  <form
+    action="/todo/<%= todo._id %>?_method=PUT"
+    method="post"
+    novalidate
+    class="needs-validation"
+  >
+    <div class="row my-5">
+      <div class="col-md-4 offset-md-4 text-center">
+        <label for="date"><h1>Edit Todo</h1></label>
+        <div class="input-group">
+          <input
+            class="form-control"
+            type="text"
+            name="todo"
+            id="todo"
+            value="<%= todo.text %>"
+            required
+          />
+          <button class="btn btn-success">
+            <i class="fa-solid fa-check"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (() => {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll(".needs-validation");
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach((form) => {
+      form.addEventListener(
+        "submit",
+        (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
